@@ -81,6 +81,11 @@ Script::Script(const QString &p_fileName, int p_charsRate,
     loadFromXml(content.join(""));
   }
   qSort(m_subtitles.begin(), m_subtitles.end(), compareSubtitleStartTime);
+
+  // Keep only 30 subtitles in demo version.
+  int n = m_subtitles.size() - 30;
+  for (int i = 0; i < n; i++)
+    m_subtitles.removeLast();
 }
 
 Script::ScriptFormat Script::format() const { return m_format; }

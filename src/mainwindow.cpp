@@ -216,6 +216,13 @@ MainWindow::MainWindow(QWidget *parent)
   m_shortcutEditor->registerAction(ui->actionEnableReload);
   m_shortcutEditor->registerAction(ui->actionShowHelp);
   m_shortcutEditor->registerAction(ui->actionExit);
+
+  QMessageBox msgBox;
+  msgBox.setIconPixmap(QPixmap(":/icons/subtivals.svg"));
+  msgBox.setText(tr("<b>Subtivals</b> %1, <b>demo</b> version.<br>"
+                    "Projection limited to 30 subtitles</b>.")
+                     .arg(VERSION));
+  msgBox.exec();
 }
 
 MainWindow::~MainWindow() {
@@ -537,7 +544,7 @@ void MainWindow::closeFile() {
   ui->actionOperatorPrintout->setEnabled(false);
   ui->actionJumpLongest->setEnabled(false);
 
-  setWindowTitle(tr("Subtivals"));
+  setWindowTitle(tr("Subtivals DEMO VERSION"));
   m_scriptProperties->setText("");
   ui->tableWidget->setRowCount(0);
 }
